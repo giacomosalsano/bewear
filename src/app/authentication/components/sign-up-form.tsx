@@ -65,6 +65,7 @@ const SignUpForm = () => {
       fetchOptions: {
         onSuccess: () => {
           router.push("/");
+          toast.success(`Conta criada com sucesso. Bem-vindo(a) ao BEWEAR!`);
         },
         onError: (error) => {
           if (error.error.code === "USER_ALREADY_EXISTS") {

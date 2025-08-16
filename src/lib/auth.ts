@@ -16,10 +16,10 @@ export const auth = betterAuth({
   },
   database: drizzleAdapter(db, {
     provider: "pg",
-    schema,
+    schema, //aqui estou dizendo que o schema do drizzle é o schema do better-auth
   }),
   user: {
-    modelName: "userTable",
+    modelName: "userTable", // Sinalizando que o "user" padrão do better-auth é o userTable do schema
   },
   session: {
     modelName: "sessionTable",

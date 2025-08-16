@@ -50,6 +50,7 @@ const SignInForm = () => {
       fetchOptions: {
         onSuccess: () => {
           router.push("/");
+          toast.success(`Bem-vindo(a) de volta ao BEWEAR!`);
         },
         onError: (ctx) => {
           if (ctx.error.code === "USER_NOT_FOUND") {
@@ -63,7 +64,7 @@ const SignInForm = () => {
             form.setError("password", {
               message: "E-mail ou senha inválidos.",
             });
-            return form.setError("email", {
+            return form.setError("email", { //aqui estou dizendo que o erro é no email diretamente com o setError do react-hook-form
               message: "E-mail ou senha inválidos.",
             });
           }
