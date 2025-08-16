@@ -52,7 +52,7 @@ const SignInForm = () => {
           router.push("/");
           toast.success(`Bem-vindo(a) de volta ao BEWEAR!`);
         },
-        onError: (ctx) => {
+        onError: (ctx) => { // ctx === context
           if (ctx.error.code === "USER_NOT_FOUND") {
             toast.error("E-mail não encontrado.");
             return form.setError("email", {
