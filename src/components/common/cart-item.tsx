@@ -6,7 +6,6 @@ import { formatCentsToBRL } from "@/helpers/money";
 import { Button } from "../ui/button";
 
 interface CartItemProps {
-  id: string;
   productName: string;
   productVariantName: string;
   productVariantImageUrl: string;
@@ -15,7 +14,6 @@ interface CartItemProps {
 }
 
 const CartItem = ({
-  id,
   productName,
   productVariantName,
   productVariantImageUrl,
