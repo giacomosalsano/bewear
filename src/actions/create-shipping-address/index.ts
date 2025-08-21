@@ -44,7 +44,7 @@ export const createShippingAddress = async (
     })
     .returning();
 
-  revalidatePath("/cart/identification");
+  revalidatePath("/cart/identification"); // revalidando os dados da página de identificação do usuário
 
   return shippingAddress;
 };
