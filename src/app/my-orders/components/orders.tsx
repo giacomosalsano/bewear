@@ -76,10 +76,10 @@ const Orders = ({ orders }: OrdersProps) => {
                         />
                         <div className="flex flex-col gap-1">
                           <p className="text-sm font-semibold">
-                            {product.productName}
+                            {product.productName} - {product.productVariantName} 
                           </p>
                           <p className="text-muted-foreground text-xs font-medium">
-                            {product.productVariantName} x {product.quantity}
+                            Quantidade: {product.quantity}
                           </p>
                         </div>
                       </div>
