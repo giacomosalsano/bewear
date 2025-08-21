@@ -45,14 +45,14 @@ export const createCheckoutSession = async (
   });
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
   const checkoutSession = await stripe.checkout.sessions.create({
-    payment_method_types: ["card"],
+    payment_method_types: ["card"], // TODO: Add other payment methods like PIX, Boleto, etc.
     mode: "payment",
-    success_url: `${process.env.NEXT_PUBLIC_APP_URL}/checkout/success`,
-    cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/checkout/cancel`,
+    success_url: `${process.env.NEXT_PUBLIC_APP_URL}/checkout/success`, //pagina quando o pagamento for bem sucedido  
+    cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/checkout/cancel`, //pagina quando o pagamento for cancelado
     metadata: {
       orderId,
     },
-    line_items: orderItems.map((orderItem) => {
+    line_items: orderItems.map((orderItem) => { //adiciona os itens do pedido no checkout
       return {
         price_data: {
           currency: "brl",

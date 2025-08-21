@@ -40,15 +40,8 @@ const Orders = ({ orders }: OrdersProps) => {
             <Accordion type="single" collapsible key={order.id}>
               <AccordionItem value="item-1">
                 <AccordionTrigger>
-                  <div className="flex flex-col gap-1">
-                    {order.status === "paid" && <Badge>Pago</Badge>}
-                    {order.status === "pending" && (
-                      <Badge variant="outline">Pagamento pendente</Badge>
-                    )}
-                    {order.status === "canceled" && (
-                      <Badge variant="destructive">Cancelado</Badge>
-                    )}
-                    <p>
+                  <div className="flex items-center justify-between w-full gap-1">                    
+                    <p className="text-sm font-bold">
                       Pedido feito em{" "}
                       {new Date(order.createdAt).toLocaleDateString("pt-BR")} às{" "}
                       {new Date(order.createdAt).toLocaleTimeString("pt-BR", {
@@ -56,6 +49,15 @@ const Orders = ({ orders }: OrdersProps) => {
                         minute: "2-digit",
                       })}
                     </p>
+                    <div>
+                      {order.status === "paid" && <Badge>Pago</Badge>}
+                    {order.status === "pending" && (
+                      <Badge variant="outline">Pagamento pendente</Badge>
+                    )}
+                    {order.status === "canceled" && (
+                      <Badge variant="destructive">Cancelado</Badge>
+                    )}
+                    </div>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
