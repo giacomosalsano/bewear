@@ -3,7 +3,6 @@ import { redirect } from "next/navigation";
 
 import Footer from "@/components/common/footer";
 import { Header } from "@/components/common/header";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { db } from "@/db";
 import { auth } from "@/lib/auth";
@@ -11,6 +10,7 @@ import { auth } from "@/lib/auth";
 import CartSummary from "../components/cart-summary";
 import { formatAddress } from "../helpers/address";
 import FinishOrderButton from "./components/finish-order-button";
+
 
 const ConfirmationPage = async () => {
   const session = await auth.api.getSession({
