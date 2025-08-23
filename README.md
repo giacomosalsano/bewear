@@ -72,7 +72,7 @@ sequenceDiagram
 1. Clone the repository:
 
    ```bash
-   git clone [repository_url] cd bewear
+   git clone https://github.com/giacomosalsano/bewear.git cd bewear
    ```
 
 2. Install dependencies:
@@ -85,10 +85,10 @@ sequenceDiagram
    Create a `.env.local` file with:
 
    ```
-   DATABASE_URL=your_postgres_connection_string
-   STRIPE_SECRET_KEY=your_stripe_secret_key
-   STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
-   BETTER_AUTH_SECRET=your_auth_secret
+   DATABASE_URL= your_postgres_connection_string
+   STRIPE_SECRET_KEY= your_stripe_secret_key
+   STRIPE_WEBHOOK_SECRET= your_stripe_webhook_secret
+   BETTER_AUTH_SECRET= your_auth_secret
    ```
 
 4. Set up the database:
