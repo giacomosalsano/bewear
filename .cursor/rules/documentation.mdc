@@ -1,0 +1,271 @@
+---
+description: use when you want to write a documentation
+globs:
+alwaysApply: false
+---
+
+### O Prompt para a IA
+
+You are an expert technical writer AI. Your task is to generate comprehensive documentation for a software project. You will analyze the project context I provide (such as source code, `package.json`, or a detailed description) and create two markdown files:
+
+1.  `documentation.md`: A complete and detailed technical document.
+2.  `README.md`: A concise, high-level summary for the project's root directory.
+
+The entire output must be in English. You must follow the exact structure, formatting, tone, and emoji usage as outlined in the templates below.
+
+**Crucial Instruction:** Wherever a user needs to manually update a URL, a list of technologies for an image link, or a personal link, you MUST add a comment right after it in the format: \`\`.
+
+---
+
+### **Template for `documentation.md`**
+
+Create a file named `documentation.md` with the following content and structure. Populate the sections by analyzing the project's context.
+
+````markdown
+# [Project Name] - Complete Documentation
+
+## 📋 Overview
+
+Provide a concise, engaging summary of the project. Describe what the application does, its main purpose, and its key selling point (e.g., "leverages real AI," "is a serverless solution," etc.). Mention the overall architecture (e.g., "cross-platform mobile app with a serverless backend").
+
+---
+
+## 🏗️ System Architecture
+
+### Tech Stack
+
+List the main technologies used, categorized as follows. Be specific.
+
+- **Framework:** (e.g., React Native (Expo), Next.js, etc.)
+- **Language:** (e.g., TypeScript)
+- **Navigation:** (e.g., Expo Router, React Navigation)
+- **State Management:** (e.g., React Context, Redux, Zustand)
+- **Forms & Validation:** (e.g., React Hook Form + Zod)
+- **HTTP Client:** (e.g., Axios, Fetch API)
+- **Styling:** (e.g., Tailwind CSS, Styled Components)
+- **Storage:** (e.g., AsyncStorage, MMKV)
+- **Key Libraries/Services:** (e.g., Expo Camera, OpenAI, Stripe)
+
+<div align="center" style="display: inline_block justify-center"><br>
+  <img src="https://skillicons.dev/icons?i=typescript,react,tailwind,nodejs,postgres" alt="icons" /> </div>
+
+### Data Flow
+
+Create a simple, numbered, text-based diagram illustrating the main data flow of the application. For example:
+`1. User action → 2. API call → 3. Backend processing → 4. Database update → 5. UI refresh`
+
+---
+
+## 🗂️ Project Structure
+
+Generate a simplified directory tree of the `src/` folder, highlighting the most important directories and their purpose.
+
+```
+[project-name]/
+  ├─ src/
+  │  ├─ app/          # Routing and screens
+  │  ├─ components/   # Reusable UI components
+  │  ├─ contexts/     # Global React Contexts
+  │  ├─ hooks/        # Custom React hooks
+  │  ├─ services/     # API clients and external services
+  │  ├─ utils/        # Utility functions
+  │  ├─ styles/       # Global styles, colors, fonts
+  │  └─ assets/       # Images and static assets
+  ├─ package.json
+  └─ documentation.md
+```
+
+---
+
+## 🔐 Authentication & Security
+
+Describe the authentication flow and security measures.
+
+- **Auth Flow:** Detail the steps for Sign Up, Sign In, Session Persistence (e.g., JWT in AsyncStorage), Protected Routes, and Sign Out.
+- **Key Auth Files:** Identify and mention the key files responsible for authentication logic, such as `AuthContext.tsx` or a custom `useAuth` hook, and briefly explain their roles.
+
+---
+
+## 🧑‍💻 Main Features & Flows
+
+Identify and list the main user-facing features of the application. For each feature, provide a brief description of the user flow and technical implementation.
+
+### 1. [Feature 1 Name] (e.g., Onboarding & Sign Up)
+
+- Describe the steps involved in this flow.
+- Mention any key components or validation schemas used (e.g., `Zod schema`).
+
+### 2. [Feature 2 Name] (e.g., Dashboard)
+
+- Describe the main components of this screen and what they display.
+
+### 3. [Feature 3 Name] (e.g., Creating a Post)
+
+- Explain how a user creates a new resource, including any modals, forms, or media uploads.
+
+_(Continue for all major features)_
+
+---
+
+## 🧩 Components
+
+List the most important and reusable components in the project, with a one-line description for each.
+
+- **Button:** Customizable button with different states.
+- **Input:** Form input with label, error, and validation.
+- **Layout:** Main application layout component.
+- **Modal:** Reusable modal for pop-up content.
+  _(Continue for other significant components)_
+
+---
+
+## 🧮 Core Logic / Key Algorithms
+
+Identify and explain any central, complex business logic or algorithm unique to this project. This could be a calculation, a data processing pipeline, a unique state management approach, etc. For example, if it's a fitness app, explain the formula for calorie calculation. If it's a finance app, explain the interest calculation logic.
+
+---
+
+## 📦 Dependencies
+
+List the project's dependencies, separated into Production and Development. Extract this information from the `package.json` file.
+
+### Production
+
+- `react`, `react-native`, `expo`, ...
+
+### Development
+
+- `typescript`, `@types/react`, ...
+
+---
+
+## 🎨 Design & Styling
+
+Describe the project's design system and styling approach.
+
+- **Colors:** Mention where colors are defined (e.g., `src/styles/colors.ts`).
+- **Global Styles:** Explain how global styles are applied (e.g., `Tailwind CSS via NativeWind`).
+- **Fonts:** Name the primary font used.
+- **Icons:** Name the icon library used (e.g., `Lucide React Native`).
+
+---
+
+## 🛠️ Utilities
+
+List key utility/helper functions and their purpose.
+
+- **formatDate:** Formats dates for display.
+- **cn:** Merges CSS classes.
+  _(Continue for other useful utilities)_
+
+---
+
+## 🌟 Strengths
+
+Based on your analysis of the code and architecture, list 5-8 key strengths of the project.
+
+1. **[Strength 1]** (e.g., Well-structured Architecture)
+2. **[Strength 2]** (e.g., Type Safety with TypeScript)
+3. **[Strength 3]** (e.g., Real AI Integration)
+4. **[Strength 4]** (e.g., Scalable and Modular)
+
+---
+
+## 🔧 Suggested Improvements
+
+Provide a list of potential improvements, categorized by priority.
+
+### High Priority
+
+1. (e.g., Add unit and integration tests)
+2. (e.g., Implement structured logging for error tracking)
+
+### Medium Priority
+
+1. (e.g., Add pagination to data lists)
+2. (e.g., Implement refresh tokens for authentication)
+
+### Low Priority
+
+1. (e.g., Add CI/CD automation)
+2. (e.g., Document the backend API with OpenAPI/Swagger)
+
+---
+
+## 🎯 Conclusion
+
+Write a concluding paragraph that summarizes the project's status, its strengths, and the recommended next steps. State that it is a robust, well-engineered application ready for the next phase of development, focusing on testing and monitoring.
+````
+
+---
+
+### **Template for `README.md`**
+
+After creating the first file, create a new file named `README.md` with the following content. This should be a much more concise version of the full documentation.
+
+`````markdown
+# [Project Name]
+
+A one-sentence tagline that quickly describes the project's main purpose and key technology.
+
+## 🚀 Main Features
+
+- A bulleted list of the **top 4-6 features**.
+- Focus on user-facing benefits (e.g., "Upload meals by **photo** or **audio**").
+- Keep it high-level and exciting.
+
+## 🏗️ Tech Stack
+
+- A bulleted list of the **most important technologies**.
+- **React Native (Expo)**
+- **TypeScript**
+- **Expo Router**
+- **React Query**
+- **React Hook Form + Zod**
+- **Tailwind CSS (NativeWind)**
+- _(etc.)_
+
+## 📊 Core Application Flow
+
+**This is a new, required section.** Create a Mermaid diagram that illustrates the most important flow of the application (e.g., user uploads something, it gets processed by the backend/AI, and the result is returned).
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Frontend
+    participant Backend
+    participant AIService as AI Service
+
+    User->>Frontend: Uploads photo/audio of a meal
+    Frontend->>Backend: Sends file for processing
+    Backend->>AIService: Requests nutritional analysis
+    AIService-->>Backend: Returns analysis data
+    Backend-->>Frontend: Sends processed meal data
+    Frontend->>User: Displays nutritional information
+```
+
+<div align="center" style="display: inline_block justify-center"><br>
+  <img src="https://skillicons.dev/icons?i=typescript,react,tailwind,nodejs,postgres" alt="icons" /> </div>
+
+## ⚡ How to Run Locally
+
+1. Clone the repository:
+   ```bash
+   git clone [repository_url] cd [project-name]
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm start
+   ```
+4. Provide any necessary instructions about environment variables (e.g., create a `.env` file and set `API_URL=...`).
+
+## 📚 Learn More
+
+For full details on architecture, features, components, and improvement suggestions, please see the [complete documentation](./documentation.md). ---
+
+made with ♥ by [Your Name/Handle](https://your-website.com)! ````
+`````
