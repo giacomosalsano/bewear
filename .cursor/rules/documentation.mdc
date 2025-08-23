@@ -208,22 +208,28 @@ After creating the first file, create a new file named `README.md` with the foll
 
 A one-sentence tagline that quickly describes the project's main purpose and key technology.
 
+### Tech Stack
+
+List the main technologies used, categorized as follows. Be specific.
+
+- **Framework:** (e.g., React Native (Expo), Next.js, etc.)
+- **Language:** (e.g., TypeScript)
+- **Navigation:** (e.g., Expo Router, React Navigation)
+- **State Management:** (e.g., React Context, Redux, Zustand)
+- **Forms & Validation:** (e.g., React Hook Form + Zod)
+- **HTTP Client:** (e.g., Axios, Fetch API)
+- **Styling:** (e.g., Tailwind CSS, Styled Components)
+- **Storage:** (e.g., AsyncStorage, MMKV)
+- **Key Libraries/Services:** (e.g., Expo Camera, OpenAI, Stripe)
+
+<div align="center" style="display: inline_block justify-center"><br>
+  <img src="https://skillicons.dev/icons?i=typescript,react,tailwind,nodejs,postgres" alt="icons" /> </div>
+
 ## 🚀 Main Features
 
 - A bulleted list of the **top 4-6 features**.
 - Focus on user-facing benefits (e.g., "Upload meals by **photo** or **audio**").
 - Keep it high-level and exciting.
-
-## 🏗️ Tech Stack
-
-- A bulleted list of the **most important technologies**.
-- **React Native (Expo)**
-- **TypeScript**
-- **Expo Router**
-- **React Query**
-- **React Hook Form + Zod**
-- **Tailwind CSS (NativeWind)**
-- _(etc.)_
 
 ## 📊 Core Application Flow
 
@@ -244,8 +250,6 @@ sequenceDiagram
     Frontend->>User: Displays nutritional information
 ```
 
-<div align="center" style="display: inline_block justify-center"><br>
-  <img src="https://skillicons.dev/icons?i=typescript,react,tailwind,nodejs,postgres" alt="icons" /> </div>
 
 ## ⚡ How to Run Locally
 
