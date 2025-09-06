@@ -20,6 +20,7 @@ import CartItem from "./cart-item";
 
 export const Cart = () => {
   const { data: cart } = useCart();
+
   return (
     <Sheet>
       <SheetTrigger asChild>
