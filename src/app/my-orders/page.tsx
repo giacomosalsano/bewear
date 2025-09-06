@@ -3,7 +3,6 @@ import { redirect } from "next/navigation";
 
 import { verifyUserSession } from "@/actions/verify-user-session";
 import Orders from "@/app/my-orders/components/orders";
-import { Header } from "@/components/common/header";
 import { db } from "@/db";
 import { orderTable } from "@/db/schema";
 
@@ -31,8 +30,6 @@ const MyOrdersPage = async () => {
 
   return (
     <>
-      <Header />
-
       <div className="px-5">
         <Orders
           orders={orders.map((order) => ({

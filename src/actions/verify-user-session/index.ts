@@ -8,6 +8,7 @@ export const verifyUserSession = async () => {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
+
   if (!session?.user) {
     return null;
   }

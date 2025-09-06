@@ -30,7 +30,7 @@ export const Cart = () => {
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>Carrinho</SheetTitle>
+          <SheetTitle className="text-xl font-semibold">Carrinho</SheetTitle>
         </SheetHeader>
 
         <div className="flex h-full flex-col px-5 pb-5">

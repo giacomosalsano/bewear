@@ -5,7 +5,6 @@ import { verifyUserSession } from "@/actions/verify-user-session";
 import CartSummary from "@/app/cart/components/cart-summary";
 import Addresses from "@/app/cart/identification/components/addresses";
 import Footer from "@/components/common/footer";
-import { Header } from "@/components/common/header";
 import { db } from "@/db";
 import { shippingAddressTable } from "@/db/schema";
 
@@ -47,8 +46,6 @@ const IdentificationPage = async () => {
 
   return (
     <div>
-      <Header />
-
       <div className="space-y-4 px-5">
         <Addresses
           shippingAddresses={shippingAddresses}

@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { Header } from "@/components/common/header";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -16,7 +15,6 @@ import {
 const CheckoutSuccessPage = () => {
   return (
     <>
-      <Header />
       <Dialog open={true} onOpenChange={() => {}}>
         <DialogContent className="text-center">
           <Image
@@ -26,6 +24,7 @@ const CheckoutSuccessPage = () => {
             height={300}
             className="mx-auto"
           />
+
           <DialogTitle className="mt-4 text-2xl">Pedido efetuado!</DialogTitle>
           <DialogDescription className="font-medium">
             Seu pedido foi efetuado com sucesso. Você pode acompanhar o status
@@ -33,18 +32,19 @@ const CheckoutSuccessPage = () => {
           </DialogDescription>
 
           <DialogFooter>
-            <div className="flex flex-col w-full gap-4 items-center justify-center">
-            <Button className="rounded-full w-full" size="lg" asChild>
-              <Link href="/my-orders">Ver meus pedidos</Link>
-            </Button>
-            <Button
-              className="rounded-full w-full"
-              variant="outline"
-              size="lg"
-              asChild
-            >
-              <Link href="/">Voltar para a loja</Link>
-            </Button>
+            <div className="flex w-full flex-col items-center justify-center gap-4">
+              <Button className="w-full rounded-full" size="lg" asChild>
+                <Link href="/my-orders">Ver meus pedidos</Link>
+              </Button>
+
+              <Button
+                className="w-full rounded-full"
+                variant="outline"
+                size="lg"
+                asChild
+              >
+                <Link href="/">Voltar para a loja</Link>
+              </Button>
             </div>
           </DialogFooter>
         </DialogContent>
