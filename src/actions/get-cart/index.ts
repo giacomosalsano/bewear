@@ -1,21 +1,18 @@
 "use server";
 
-import { headers } from "next/headers";
-
+import { verifyUserSession } from "@/actions/verify-user-session";
 import { db } from "@/db";
 import { cartTable } from "@/db/schema";
-import { auth } from "@/lib/auth";
 
 export const getCart = async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-  if (!session?.user) {
-    return null
+  const session = await verifyUserSession();
+
+  if (!session) {
+    return null;
   }
 
   const cart = await db.query.cartTable.findFirst({
-    where: (cart, { eq }) => eq(cart.userId, session.user.id),
+    where: (cart, { eq }) => eq(cart.userId, session.id),
     with: {
       shippingAddress: true,
       items: {
@@ -29,13 +26,15 @@ export const getCart = async () => {
       },
     },
   });
+
   if (!cart) {
     const [newCart] = await db
       .insert(cartTable)
       .values({
-        userId: session.user.id,
+        userId: session.id,
       })
       .returning();
+
     return {
       ...newCart,
       items: [],
@@ -43,6 +42,7 @@ export const getCart = async () => {
       shippingAddress: null,
     };
   }
+
   return {
     ...cart,
     totalPriceInCents: cart.items.reduce(

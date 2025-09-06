@@ -1,18 +1,15 @@
 "use server";
 
 import { eq } from "drizzle-orm";
-import { headers } from "next/headers";
 
+import { verifyUserSession } from "@/actions/verify-user-session";
 import { db } from "@/db";
 import { shippingAddressTable } from "@/db/schema";
-import { auth } from "@/lib/auth";
 
 export async function getUserAddresses() {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+  const session = await verifyUserSession();
 
-  if (!session?.user?.id) {
+  if (!session) {
     throw new Error("Usuário não autenticado");
   }
 
@@ -20,12 +17,13 @@ export async function getUserAddresses() {
     const addresses = await db
       .select()
       .from(shippingAddressTable)
-      .where(eq(shippingAddressTable.userId, session.user.id))
+      .where(eq(shippingAddressTable.userId, session.id))
       .orderBy(shippingAddressTable.createdAt);
 
     return addresses;
   } catch (error) {
     console.error("Erro ao buscar endereços:", error);
+
     throw new Error("Erro ao buscar endereços");
   }
 }

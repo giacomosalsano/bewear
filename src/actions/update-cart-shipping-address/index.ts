@@ -1,27 +1,23 @@
 "use server";
 
 import { eq } from "drizzle-orm";
-import { headers } from "next/headers";
-
-import { db } from "@/db";
-import { cartTable } from "@/db/schema";
-import { auth } from "@/lib/auth";
 
 import {
   UpdateCartShippingAddressSchema,
   updateCartShippingAddressSchema,
-} from "./schema";
+} from "@/actions/update-cart-shipping-address/schema";
+import { verifyUserSession } from "@/actions/verify-user-session";
+import { db } from "@/db";
+import { cartTable } from "@/db/schema";
 
 export const updateCartShippingAddress = async (
   data: UpdateCartShippingAddressSchema,
 ) => {
   updateCartShippingAddressSchema.parse(data);
 
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+  const session = await verifyUserSession();
 
-  if (!session?.user) {
+  if (!session) {
     throw new Error("Unauthorized");
   }
 
@@ -29,7 +25,7 @@ export const updateCartShippingAddress = async (
     where: (shippingAddress, { eq, and }) =>
       and(
         eq(shippingAddress.id, data.shippingAddressId),
-        eq(shippingAddress.userId, session.user.id),
+        eq(shippingAddress.userId, session.id),
       ),
   });
 
@@ -38,7 +34,7 @@ export const updateCartShippingAddress = async (
   }
 
   const cart = await db.query.cartTable.findFirst({
-    where: (cart, { eq }) => eq(cart.userId, session.user.id),
+    where: (cart, { eq }) => eq(cart.userId, session.id),
   });
 
   if (!cart) {

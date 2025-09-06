@@ -1,23 +1,21 @@
 import { eq } from "drizzle-orm";
-import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
+import { verifyUserSession } from "@/actions/verify-user-session";
+import Orders from "@/app/my-orders/components/orders";
 import { Header } from "@/components/common/header";
 import { db } from "@/db";
 import { orderTable } from "@/db/schema";
-import { auth } from "@/lib/auth";
-
-import Orders from "./components/orders";
 
 const MyOrdersPage = async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-  if (!session?.user.id) {
+  const session = await verifyUserSession();
+
+  if (!session) {
     redirect("/login");
   }
+
   const orders = await db.query.orderTable.findMany({
-    where: eq(orderTable.userId, session?.user.id),
+    where: eq(orderTable.userId, session.id),
     with: {
       items: {
         with: {
@@ -34,6 +32,7 @@ const MyOrdersPage = async () => {
   return (
     <>
       <Header />
+
       <div className="px-5">
         <Orders
           orders={orders.map((order) => ({

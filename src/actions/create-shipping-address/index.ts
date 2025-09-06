@@ -1,34 +1,30 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { headers } from "next/headers";
-
-import { db } from "@/db";
-import { shippingAddressTable } from "@/db/schema";
-import { auth } from "@/lib/auth";
 
 import {
   CreateShippingAddressSchema,
   createShippingAddressSchema,
-} from "./schema";
+} from "@/actions/create-shipping-address/schema";
+import { verifyUserSession } from "@/actions/verify-user-session";
+import { db } from "@/db";
+import { shippingAddressTable } from "@/db/schema";
 
 export const createShippingAddress = async (
   data: CreateShippingAddressSchema,
 ) => {
   createShippingAddressSchema.parse(data);
 
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+  const session = await verifyUserSession();
 
-  if (!session?.user) {
+  if (!session) {
     throw new Error("Unauthorized");
   }
 
   const [shippingAddress] = await db
     .insert(shippingAddressTable)
     .values({
-      userId: session.user.id,
+      userId: session.id,
       recipientName: data.fullName,
       street: data.address,
       number: data.number,
